@@ -31,7 +31,10 @@ The mathematical operator for the `scroll_offset` part of this code is to change
 
 After that has been finished, I had to adjust the mirroring for the y-value of the background, so it could repeatidely scroll infinite backgrounds. Without this, the background would just move downwards leaving the screen.
 
+### Day 4 - 11/18/25
+On the 4th day, I learned how to add my ship sprite to my background. I watched more of that Godot Crash Course and added my ship sprite from the spaceship shooter gamekit pack that I just downloaded. So, what I did was add a new node which was called `CharacterBody2D` in a separate scene, attached a separwate script to that scene, and I added a capsule collision shape node, so we know where the ship sprite's hitbox is. How I even got the sprites from the pack to pop up in the Godot project was through dragging and dropping.
 
+Now I could only find a sprite sheet of the ship, so when making sprite frames
 
 <!--
 * Links you used today (websites, videos, etc)
