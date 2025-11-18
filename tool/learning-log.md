@@ -34,7 +34,12 @@ After that has been finished, I had to adjust the mirroring for the y-value of t
 ### Day 4 - 11/18/25
 On the 4th day, I learned how to add my ship sprite to my background. I watched more of that Godot Crash Course and added my ship sprite from the spaceship shooter gamekit pack that I just downloaded. So, what I did was add a new node which was called `CharacterBody2D` in a separate scene, attached a separwate script to that scene, and I added a capsule collision shape node, so we know where the ship sprite's hitbox is. How I even got the sprites from the pack to pop up in the Godot project was through dragging and dropping.
 
-Now I could only find a sprite sheet of the ship, so when making sprite frames
+Now I could only find a sprite sheet of the ship, so when making sprite frames, I selected one frame to be the ship by setting the horizontal to 2 and the vertical to zero, and simply selected one. ![Text](../screenshots/Godotex1.png) Seen on the image below shows the script being made by attaching a node script to the player sprite. I chose a default "CharacterBody2D: Basic Movement" template to have the script that's shown. Now witth the entire script attached, once the user presses play from the starting scene. the ship sprite appears on the top left corner as tiny and then falls off screen.
+```js
+if not is_on_floor():
+		velocity += get_gravity() * delta
+```
+This function is the reason for why it falls off screen because there is no ground or floor or anything for the sprite to collide on. This code itself adds gravity according to the comments of the template.
 
 <!--
 * Links you used today (websites, videos, etc)
