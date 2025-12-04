@@ -41,6 +41,32 @@ if not is_on_floor():
 ```
 This function is the reason for why it falls off screen because there is no ground or floor or anything for the sprite to collide on. This code itself adds gravity according to the comments of the template.
 
+### Day 5 - 12/3/25
+So, it's the next day, and where I left off, whenevr I ran the game, my sprite fell off screen from the top left. So, what I did was google how to change script to try and change that, so I deleted the previous script, thinking I would have to find a new template, but I didn't. So, I googled on how to make my sprite not fall off and only move left to right, and it gave me thid code
+```js
+extends CharacterBody2D
+
+@export var speed = 400
+
+func _physics_process(delta):
+    # Get input for the horizontal axis
+    var direction_x = Input.get_axis("ui_left", "ui_right")
+
+    # Set velocity only for the x-axis
+    velocity.x = direction_x * speed
+    velocity.y = 0 # Ensure no vertical movement
+
+    # Apply movement
+    move_and_slide()
+```
+So, I copied this, and don't worry, I see the comments that tell me what these functions do. Now when running the code, the spite successfully stays nad mvoes left and right, the only issue is it's on the position, I don't want it to be. So, I googled once again on how to change position of the sprite and it said that I got to put in this code
+```js
+func _ready():
+    # Set the sprite's position to (200, 150)
+    position = Vector2(200, 150)
+```
+What this does is set the sprite's position at xertain axes by setting the position to the vector with x and y values in the parenthesis. The initial values seen on the code above have my spaceship on top, usually where the enemy is located, so I changed both values to 550, to finally put the sprite in the position like normal 2d shooter games do.
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
