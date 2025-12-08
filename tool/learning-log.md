@@ -67,6 +67,17 @@ func _ready():
 ```
 What this does is set the sprite's position at xertain axes by setting the position to the vector with x and y values in the parenthesis. The initial values seen on the code above have my spaceship on top, usually where the enemy is located, so I changed both values to 550, to finally put the sprite in the position like normal 2d shooter games do.
 
+### Day 6 - 12/8/25
+It's the next day, and I decided to change the size of my ship sprite. I looked up on Google how to change size of a 2d sprite and I tried putting in this code:
+```js
+$player.scale = Vector2(0.5, 0.5)
+```
+I thought this would work, but when I ran the code, it gave me an error after I pressed start. So I watched another Youtube video on [How To Scale a 2D Object in Godot](https://www.youtube.com/watch?v=hWAy7ajhg2c) and it turns out I just had to use this code:
+```js
+scale.x = 10
+scale.y = 10
+```
+When I tried 10 for these values, the ship sprite was too big for me, so I tested 5, and then finally 3 to get my ship sprite at just the right sides.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
