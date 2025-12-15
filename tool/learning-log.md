@@ -78,6 +78,7 @@ scale.x = 10
 scale.y = 10
 ```
 When I tried 10 for these values, the ship sprite was too big for me, so I tested 5, and then finally 3 to get my ship sprite at just the right sides.
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
