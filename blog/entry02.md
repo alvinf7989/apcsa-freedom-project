@@ -44,14 +44,28 @@ Alright, we are onto the final day for this blog entry to talk about. I changed 
 $player.scale = Vector2(0.5, 0.5)
 ```
 When this was put in, an error ocurred after I pressed Start in the runner. I watched another Youtube video on [How To Scale a 2D Object in Godot](https://www.youtube.com/watch?v=hWAy7ajhg2c) and it was simple and gave me code like this:
-```js
+```java
 scale.x = 10
 scale.y = 10
 ```
 Well, it didn't actually give me code, I just typed in what was shown nin the video, but this works and resizes my sprite. But, I changed the values from 10 to 3, so my sprite could be the right size.
 
 ## My FP Goal for Winter Break
-So, here I talk about my goal for the upcoming winter break.
+So, here I talk about my goal for the upcoming winter break. So what I plan on doing for the Winter Break connects to where I am with my project right now. Currently, I'm thinking of a 2D Shooter game where you play as the villains and try to shoot the protagonist that's the one ship on top. Now since antagonists in 2D Shooters often come in groups, I will try to duplicate my sprite and have five next to each other. Another goal for this break would be be to create another ship on top to showcase what the player will be shooting. Now before we go, I must address the EDP & the Skills that I've acquired.
+## EDP
+Here I am once again confused on the part of the Engineering Designing Process. I don't know whether I'm in the Brainstroming or Planning part of the process. I guess I'd say that from the last 3 days that I worked on Godot, I would be brainstorming, and for the Freedom Project goal for winter break, that would be part of the planning part of the Engineering Design Process. I believe when we are done planning for win ter break, we actually get to the creating part of the EDP.
+## Skills
+* **How To Google**: So, the way I used this skill was a lot. I googled most of the stuff since I was creating a 2D shooter since Day 5. Now, what I googled for that day was how to set the position of a sprite in Godot. For Day 6, I looked up how to change scale of a 2d sprite in Godot. Both of these google searches ended up with me watching a YouTube video or looking at the code given that also has comments provided.
+
+* **Organization**: Organization as a skill plays a big role for my FP Goal for Winter Break, because I've decided planning on what I hope to accomplish with this project by the end of Winter Break. Also, ever since Day 5, I've been working on my tool one day a week and logging in what I learned from it.
+
+## Sources
+[Godot Crash Course](https://www.youtube.com/watch?v=S8lMTwSRoRg)
+
+[How To Scale a 2D Object in Godot](https://www.youtube.com/watch?v=hWAy7ajhg2c)
+
+[My Learning Log](../tool/learning-log.md)
+
 
 [Previous](entry01.md) | [Next](entry03.md)
 
