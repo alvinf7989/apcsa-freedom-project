@@ -1,7 +1,7 @@
 # Entry 1
 ##### 11/7/25
 
-Welcome to my firstblog entry of the final Freedom Project of high school. It has been 3 years and this year is when the Freedom Projects get interesting. We were given the option to choose any tool in APCSA and we decide what we will be trying to make with that tool. Let's get to talking about my tool.
+Welcome to my first blog entry of the final Freedom Project of high school. It has been 3 years and this year is when the Freedom Projects get interesting. We were given the option to choose any tool in APCSA and we decide what we will be trying to make with that tool. Let's get to talking about my tool.
 
 ## My Tool
 So, the tool that I chose this time wasn't Kaboom, but instead was this advanced programming application called Godot (guh-dow). In this tool, I will try to make a unique 2d shooter game, but I haven't gotten to the part that makes it unique just yet. Of course every tool comes with a learning log which is what I used in this one. Like the Learning log from Sep10, I took 2 days to study on what I did to tinker with this tool on the [APCSA Learning Log](../tool/learning-log.md). When looking at the months between those two days, they are very far apart, but for a good reason. Ever since, September ended, there was no due date assigned for the next learning log, and most of the Mondays on October were days off. But hey, let's get started on talking about Godot.

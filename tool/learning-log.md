@@ -32,7 +32,7 @@ The mathematical operator for the `scroll_offset` part of this code is to change
 After that has been finished, I had to adjust the mirroring for the y-value of the background, so it could repeatidely scroll infinite backgrounds. Without this, the background would just move downwards leaving the screen.
 
 ### Day 4 - 11/18/25
-On the 4th day, I learned how to add my ship sprite to my background. I watched more of that Godot Crash Course and added my ship sprite from the spaceship shooter gamekit pack that I just downloaded. So, what I did was add a new node which was called `CharacterBody2D` in a separate scene, attached a separwate script to that scene, and I added a capsule collision shape node, so we know where the ship sprite's hitbox is. How I even got the sprites from the pack to pop up in the Godot project was through dragging and dropping.
+On the 4th day, I learned how to add my ship sprite to my background. I watched more of that Godot Crash Course and added my ship sprite from the spaceship shooter gamekit pack that I just downloaded. So, what I did was add a new node which was called `CharacterBody2D` in a separate scene, attached a separate script to that scene, and I added a capsule collision shape node, so we know where the ship sprite's hitbox is. How I even got the sprites from the pack to pop up in the Godot project was through dragging and dropping.
 
 Now I could only find a sprite sheet of the ship, so when making sprite frames, I selected one frame to be the ship by setting the horizontal to 2 and the vertical to zero, and simply selected one. ![Text](../screenshots/Godotex1.png) Seen on the image below shows the script being made by attaching a node script to the player sprite. I chose a default "CharacterBody2D: Basic Movement" template to have the script that's shown. Now witth the entire script attached, once the user presses play from the starting scene. the ship sprite appears on the top left corner as tiny and then falls off screen.
 ```js
@@ -42,7 +42,7 @@ if not is_on_floor():
 This function is the reason for why it falls off screen because there is no ground or floor or anything for the sprite to collide on. This code itself adds gravity according to the comments of the template.
 
 ### Day 5 - 12/3/25
-So, it's the next day, and where I left off, whenevr I ran the game, my sprite fell off screen from the top left. So, what I did was google how to change script to try and change that, so I deleted the previous script, thinking I would have to find a new template, but I didn't. So, I googled on how to make my sprite not fall off and only move left to right, and it gave me thid code
+So, it's the next day, and where I left off, whenevr I ran the game, my sprite fell off screen from the top left. So, what I did was google how to change script to try and change that, so I deleted the previous script, thinking I would have to find a new template, but I didn't. So, I googled on how to make my sprite not fall off and only move left to right, and it gave me this code
 ```js
 extends CharacterBody2D
 
@@ -59,8 +59,8 @@ func _physics_process(delta):
     # Apply movement
     move_and_slide()
 ```
-So, I copied this, and don't worry, I see the comments that tell me what these functions do. Now when running the code, the spite successfully stays nad mvoes left and right, the only issue is it's on the position, I don't want it to be. So, I googled once again on how to change position of the sprite and it said that I got to put in this code
-```js
+So, I copied this, and don't worry, I see the comments that tell me what these functions do. Now when running the code, the spite successfully stays and moves left and right, the only issue is it's on the position, I don't want it to be. So, I googled once again on how to change position of the sprite and it said that I got to put in this code
+```java
 func _ready():
     # Set the sprite's position to (200, 150)
     position = Vector2(200, 150)
