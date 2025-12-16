@@ -51,7 +51,7 @@ scale.y = 10
 Well, it didn't actually give me code, I just typed in what was shown nin the video, but this works and resizes my sprite. But, I changed the values from 10 to 3, so my sprite could be the right size.
 
 ## My FP Goal for Winter Break
-So, here I talk abput my goal for the upcoming winter break.
+So, here I talk about my goal for the upcoming winter break.
 
 [Previous](entry01.md) | [Next](entry03.md)
 
