@@ -85,7 +85,16 @@ I am back on December and felt like I should do one last tool tinkering day of t
 ### Day 8 - 1/12/26
 Welcome to the first learning log day of 2026, previously I added 2 small ship sprites on each side of the main ship sprites. What I wanted to do was add another ship sprite at the top as part of my goal from one of my blog entries. The ship sprite would be the same as the main sprite at the bottom but it would be a different color. So, I added another Sprite2D node to represent the top ship, then since the other ships were too small, I decided to add my previous ship that I've used before. Of course there's two of them, and since I don't know how to make it one sprite, I had to improvise and take the frame from my AnimatedSprite2D node. I also noticed my orginal ship sprite was upside down so I changed the rotation value of that sprite to 180 degrees to flip it. Unfortunately, while I did good on putting the ship sprite up top, the color still remains the same and I'm trying to change it.
 
+### Day 9 - 2/2/26
+Another day, another Godot review. So, I left off on trying to figure out how to change the code, but then went to a different step which is making the top ship still even when I'm oving my bottom ships, because right now, it's moving with my ships in sync. I don't want that, so I tried creating a script and googling solutions. Yes, I used Google again. I tried many scripts, but nothing worked. I then enabled Top-level which was in the Inspector section of my sprite that caused my top ship to disappear. Here was the final script that I used.
+```java
+extends Sprite2D
 
+func _ready():
+	# Set the global position when the scene loads.
+	global_position = Vector2(555, 100)
+```
+This was to fix that issue of the ship not showing up. I tinkered with the x value, so it wasn't originally 555. Once I set up that position it's tiny now. Which means I gotta change the scale from (1, 1) to (2, 2). After doing such a thing, The ship is now still and no longer moves with the bottom ships.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
