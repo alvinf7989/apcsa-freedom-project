@@ -24,8 +24,14 @@ This is to set the position of the top ship in a local script in its respective 
 And that is all the days that I spent on tinkering my Godot tool. I gotta say, I've done really good progress in accomplishing my Winter Break goal. However, I said I'd add five ships next to the main ship in [my previous entry](entry02.md). That was way too much ships, so I stuck with 2 on each side. I think I meant to say I would have five total ships. Now only one half of this goal was accomplished during Winter Break. The rest was before the assigned Blog Entry.
 
 ## EDP
+Now it's time to talk about the path on my EDP (Engineering Design Process) So, when I tinkered with Godot on these three days, they all fit in with my goal from Winter Break last entry. That entry was when I was in the **Planning** part of the process. Now that I've done that goal, I advance to the next step which is **Creating** the prototype, but I was already creating this Godot project, the first time I used it. I also feel that the step after Creating was already done by running the code over and over for misrtakes because technically, that's how you test code.
 
 ## Skills
+**Problem Decomposition:** So, problem decomposition was a new skill that I acquired and it was because I tried to think of a soliution for one problem, but then looked at another problem and broke that problem down into smaller pieces where each of those pieces would be in different days. The big task was my Freedom Project goal from Winter Break, where I broke that task in days. So I did the task of adding small ships next to the main ship on Day 7 and then added the ship sprite on top to represent the target the player's trying to shoot on Day 8.
+
+**Embracing Failure UPDATE:** This skill has been improved in terms of I've been trying to change codes in the script of certain nodes like the Top Ship node to stay static and not move with the bottom ships that the player controls. It just turns out that I was supposed to enable top-level and change the `Vector()` value all along.
+
+**How To Google UPDATE:** The only reason I was able to embrace and resolve my failure from before is by doing google searches once again. I did one Google Search on ho to change a sprite's color, but it didn't give me any helpful tools. Maybe I should specify what the node is on Google that I want to change colors on. I then did another Google Search on how to keep the ship static and not move with the player, and it told me about the Top-level functionality in Godot where if it's enabled it ignores any movement from the parent as the sprite is the child of the parent node.
 
 ## Sources
 [Blog Entry 1](entry01.md)
