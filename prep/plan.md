@@ -22,7 +22,8 @@
 - [ ] Make visual changes to the menu
 - [ ] Make visual changes to the gameplay
   - [ ] Have the ships flash red when hit
-  - [ ] Have an explosion visual on the ships.
+  - [ ] Have an explosion visual on the ships
+- [ ] Add sound effects
 
 
 <!-- EXAMPLE
