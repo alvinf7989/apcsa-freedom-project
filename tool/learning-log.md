@@ -95,6 +95,30 @@ func _ready():
 	global_position = Vector2(555, 100)
 ```
 This was to fix that issue of the ship not showing up. I tinkered with the x value, so it wasn't originally 555. Once I set up that position it's tiny now. Which means I gotta change the scale from (1, 1) to (2, 2). After doing such a thing, The ship is now still and no longer moves with the bottom ships.
+
+### Day 10 - 3/2/26
+It's the next day, I finished setting up my plan and looking at it, it says I need to make the top side move side to side, so I looked up on Google "i want to make my ship on 2d godot move side to side automatically" and it sent me an AI overview telling me to attach the following code to the top ship script.
+```java
+@export var speed: float = 200.0
+@export var width: float = 300.0
+var time: float = 0.0
+
+func _process(delta):
+	time += delta
+	// Oscillates side-to-side based on a sine wave
+	position.x += sin(time * speed * 0.01) * speed * delta
+	// Alternatively, for strict horizontal ping-pong:
+	// position.x = sin(time * 2) * width
+```
+When I put this in and ran the code, the ship was moving side to side, but it's only moving mostly to the right, so I tinkered withy the `Vector()` value at global position, and changed the x values until it moves equally side to side.
+```java
+global_position = Vector2(350, 100)
+```
+I also tinkered with the number in `sin(time * speed * 0.01)`, so when the top ship moves, it's more spread out. If I increase this decimal, the sprite moves back and forth faster, so I slowed it down by decreasing the decimal.
+```java
+position.x += sin(time * speed * 0.005) * speed * delta
+```
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
