@@ -118,6 +118,29 @@ I also tinkered with the number in `sin(time * speed * 0.01)`, so when the top s
 ```java
 position.x += sin(time * speed * 0.005) * speed * delta
 ```
+### Day 11 - 3/9/26
+It's the next day and I gotta add my pellets to the ships. So, at first I looked up on Google "how to get animatedsprite2d to shoot shapes in Godot". I had to be very specific when saying what I needed help with by referencing the Game engine and node that I have trouble. Google always gives me an AI overview when I ask it questions now. It said I had to create a pellet scene with a `coloRect` node in there to represent the pellet I want coming out. I was then told to paste this code after attaching a script to my pellet node
+```java
+extends Area2D
+
+var speed = 600 // Initializes speed
+
+func _physics_process(delta):
+	// moves up
+	position.y -= speed * delta
+```
+This was done right after I put in another piece of code into the player script (bottom ship) where the `shoot()` function is created. Inside this function is the clone of the pellet scene stored in a variable. The next line is to add that variable to the main shooting scene. Then I set the position to the same position as the bottom ship, so no pellets end up on the top left.
+```java
+func shoot():
+	var p = pellet_scene.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position
+```
+This function is called when the buttons "enter" or "space" are pressed using `if Input.is_action_just_pressed("ui_accept"):`. Now all I needed to do was load the pellet scene. When loading the pellet scene I first did that by seeing that the Inspector side of the shooting area scene was empty, so then I'd fill it out with the pellet scene, but I just had to export the pellet scene seeing as that other method didn't work.
+```java
+@export var pellet_scene: PackedScene = preload("res://pellet.tscn")
+```
+After all of that, the pellets were finally working, but they were big. I have to look into this tomorrow. (Yes, tomorrow because the next blog entry's due next Monday and I have to have at least three days to log in my learning.)
 
 <!--
 * Links you used today (websites, videos, etc)
