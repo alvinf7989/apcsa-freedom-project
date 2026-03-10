@@ -118,6 +118,7 @@ I also tinkered with the number in `sin(time * speed * 0.01)`, so when the top s
 ```java
 position.x += sin(time * speed * 0.005) * speed * delta
 ```
+
 ### Day 11 - 3/9/26
 It's the next day and I gotta add my pellets to the ships. So, at first I looked up on Google "how to get animatedsprite2d to shoot shapes in Godot". I had to be very specific when saying what I needed help with by referencing the Game engine and node that I have trouble. Google always gives me an AI overview when I ask it questions now. It said I had to create a pellet scene with a `coloRect` node in there to represent the pellet I want coming out. I was then told to paste this code after attaching a script to my pellet node
 ```java
@@ -140,12 +141,14 @@ This function is called when the buttons "enter" or "space" are pressed using `i
 ```java
 @export var pellet_scene: PackedScene = preload("res://pellet.tscn")
 ```
-After all of that, the pellets were finally working, but they were big. I have to look into this tomorrow. (Yes, tomorrow because the next blog entry's due next Monday and I have to have at least three days to log in my learning.)
+After all of that, the pellets were finally working, but they were big. I have to look into this tomorrow. (Yes, tomorrow because the next blog entry's due next Monday and I have to log in at least three days with my tool.)
 
+### Day 12 - 3/10/26
+It's the next day and when I say that, I mean it's yesterday's tomorrow, aka Today. Now last time, I was able to get the ship from the bottom to shoot yellowe square pellets at the ship, but the squares are too big and not quite in position. I tried looking at the inspector side for the Pellet, Color rect, and collision ship to find the scale, until finally, I was able to find the Transform tab in the Color Rect node. ![](../screenshots/crees.png) The size was initially 40 x and 40 y, so I changed the size to 10 by 10 pixels while also changing the position to be centered within the ship.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
-* Challenges, a-ha moments, etc
+* Challenges, a-ha moments, etc.
 * Questions you still have
 * What you're going to try next
 -->
