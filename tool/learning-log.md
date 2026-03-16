@@ -145,6 +145,9 @@ After all of that, the pellets were finally working, but they were big. I have t
 
 ### Day 12 - 3/10/26
 It's the next day and when I say that, I mean it's yesterday's tomorrow, aka Today. Now last time, I was able to get the ship from the bottom to shoot yellowe square pellets at the ship, but the squares are too big and not quite in position. I tried looking at the inspector side for the Pellet, Color rect, and collision ship to find the scale, until finally, I was able to find the Transform tab in the Color Rect node. ![](../screenshots/crees.png) The size was initially 40 x and 40 y, so I changed the size to 10 by 10 pixels while also changing the position to be centered within the ship.
+
+### Day 13 - 3/16/26
+I'm here on the next day and in this one, I wanna change the color of the top ship sprite, so it stands out of all the other sprites. So, I googled what I wanted to do to the top ship and put a screenshot up there and it told me to use the Modulate property that's shown in the visibility section which is all in the Inspector tab on the right, I clicked modulate and this color picker popped up ![](../screenshots/colorgrad.png) So, I changed the color to a red to try and have the top ship stand out and it worked for my code. Don't worry, I'll work more this week.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
