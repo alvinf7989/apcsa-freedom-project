@@ -148,6 +148,25 @@ It's the next day and when I say that, I mean it's yesterday's tomorrow, aka Tod
 
 ### Day 13 - 3/16/26
 I'm here on the next day and in this one, I wanna change the color of the top ship sprite, so it stands out of all the other sprites. So, I googled what I wanted to do to the top ship and put a screenshot up there and it told me to use the Modulate property that's shown in the visibility section which is all in the Inspector tab on the right, I clicked modulate and this color picker popped up ![](../screenshots/colorgrad.png) So, I changed the color to a red to try and have the top ship stand out and it worked for my code. Don't worry, I'll work more this week.
+
+### Day 14 - 3/20/26
+I am on the next day and what my plan for waht's next is to have the top ship automatically shoot pellets at the bottom ship as if it were the protagonist in the 2D shooter. This is where I thought I'd make the 2D shooter unique. It's by having the shooter game be vice versa and the villains are trying to destroy the protagonist. The villain ships usually have more than one ship, which is known as backup, so that's where I'm going with this.
+
+Now I've tried looking up on Google that "I want to have the top ship shoot pellets" and I keep getting scripts which have a similar result when I wanted the bottom ship to shoot pellets. In the end, I realized the easier way to get the top ship to automaticaly shoot pellets is to create another pellet scene designed for the top ship. I changed the color rectangle for that one to green to differentiate.
+
+Let's talk about what I did to fix everything. I added the Timer node as the child of Top Ship to have a function happen every one second as shown in the inspector section. Inside the top ship's script contains the exported scene of "pellet_top" and the shoot function for the top ship was thus created, and I leanred on my own by using the same functions for the bottom ship sprite
+```java
+func shoot():
+	var p = pellet_top.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position
+```
+I also put in the function from Google that said to call the `shoot()` function for the timer node called `_on_timer_timeout():`
+```java
+func _on_timer_timeout():
+	shoot();
+```
+Google also told me to go to the Node section, which is in the same location as the inspector panel and double tapped on the `timeout()` function and connected it to the Top Ship node which connects to the `_on_timer_timeout()` function. ![](../screenshots/node-panel.png) Now, I wasn't done yet. After running the code the pellets still don't pop up, so I Googled again and noticed it's because the Autostart option hasn't been checked for the timer. Now after running the code. The pellets work, but there a bit too big and shoot in the wrong direction. So I switched the `-` in `position.y -= speed * delta` to a `+` sign. I also changed the pellet size by having the same values as the yellow pellet that the bottom ship shoots.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
