@@ -167,6 +167,30 @@ func _on_timer_timeout():
 	shoot();
 ```
 Google also told me to go to the Node section, which is in the same location as the inspector panel and double tapped on the `timeout()` function and connected it to the Top Ship node which connects to the `_on_timer_timeout()` function. ![](../screenshots/node-panel.png) Now, I wasn't done yet. After running the code the pellets still don't pop up, so I Googled again and noticed it's because the Autostart option hasn't been checked for the timer. Now after running the code. The pellets work, but there a bit too big and shoot in the wrong direction. So I switched the `-` in `position.y -= speed * delta` to a `+` sign. I also changed the pellet size by having the same values as the yellow pellet that the bottom ship shoots.
+
+### Day 15 - 3/23/26
+I'm back with another day on March, and I wanna look at my plan again to check that the top ship should disappear when the pellet from the bottom ship has interacted with the top ship. So, what I did was Google once again and I gave in a screenshot because I felt it would be easier to figure out what I was doing and how I can fix this. Now what Google told me to do was add a script that isgiven a health variable of 5 of once enough pellets interacted with the ship, it would disappear using `queue_free()`
+```java
+@export var health: int = 5
+
+func take_damage(amount: int):
+    health -= amount
+    print("Top ship hit! Health remaining: ", health)
+
+    if health <= 0:
+        # You can add an explosion effect here later
+        queue_free() # This removes the ship from the scene
+```
+Now to test this, I put a print statement that would run if the pellet interacted with the top ship. After this, I had to make changes to my Scene tree by setting a Collision Shape as the child of the Area2D that's also the child of the Top Ship. The final step I did today was add the `on_area_entered` function to have the pellets disappear when interacting with the top ship.
+```java
+func _on_area_entered(area: Area2D):
+	// Check if the thing we hit has the take_damage function
+	var hit_object = area.get_parent() // Gets the Top Ship node
+	if hit_object.has_method("take_damage"):
+		hit_object.take_damage(1)
+		queue_free() // Destroy the pellet after impact
+```
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
