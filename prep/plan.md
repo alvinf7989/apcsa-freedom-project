@@ -12,10 +12,10 @@
 
 - [ ] Finish the Vice Versa 2D Shooter first level (deadline: 4/8)
   - [x] Have Top Ship sprite move side to side (deadline: 3/4)
-  - [ ] Have the main ship sprite (bottom) shoot pellets at top ship (deadline: 3/10)
-  - [ ] Have top ship disappear when enough pellet damage has been dealt. (deadline: 3/20)
-  - [ ] Have text pop up saying "Run Code again to Start" (deadline: 3/30)
-  - [ ] Have text pop up saying "YOU WIN!" (deadline: 4/7)
+  - [x] Have the main ship sprite (bottom) shoot pellets at top ship (deadline: 3/10)
+  - [x] Have top ship disappear when enough pellet damage has been dealt. (deadline: 3/25)
+  - [ ] Have text pop up saying "Run Code again to Start Over" after Gaming Over. (deadline: 4/7)
+  - [ ] Have text pop up saying "YOU WIN!" (deadline: 4/13)
 
 #### Beyond MVP
 
