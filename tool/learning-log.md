@@ -191,6 +191,9 @@ func _on_area_entered(area: Area2D):
 		queue_free() // Destroy the pellet after impact
 ```
 
+### Day 16 - 3/30/26
+So, it's the next day and instead of doing something to my project I decided to try and figure out how to share the Godot Project to Github. Now I didn't know how to do this by myself so I asked for help and one of my students showed me a video that showed me [how to share my Godot repositories to Github](https://www.youtube.com/watch?v=qT8ut3EaIpM). For some reason, everytime I try adding the Godot repo, it only shows me nothing put attributes which is just empty. So, I just followed the Youtube video and after doing so my Github repository has been published and now looks like this ![](../screenshots/gitimport.png). However, I don't know if the github repositories is supposed to have barey any code. You could see for yourself [here](https://github.com/alvinf7989/new-game-project) Yes, I'm aware that I didn't properly rename my project.
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
