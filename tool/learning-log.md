@@ -194,6 +194,82 @@ func _on_area_entered(area: Area2D):
 ### Day 16 - 3/30/26
 So, it's the next day and instead of doing something to my project I decided to try and figure out how to share the Godot Project to Github. Now I didn't know how to do this by myself so I asked for help and one of my students showed me a video that showed me [how to share my Godot repositories to Github](https://www.youtube.com/watch?v=qT8ut3EaIpM). For some reason, everytime I try adding the Godot repo, it only shows me nothing put attributes which is just empty. So, I just followed the Youtube video and after doing so my Github repository has been published and now looks like this ![](../screenshots/gitimport.png). However, I don't know if the github repositories is supposed to have barey any code. You could see for yourself [here](https://github.com/alvinf7989/new-game-project) Yes, I'm aware that I didn't properly rename my project.
 
+### Day 17 - 4/6/26
+It's the day before my next deadline which is to have tet pop up telling the user to start the code again to play. This means that I have to also get the bottom ship to disappear after enough damage has been taken. So what I first thought of doing was copying the code for the top ship below
+```java
+@export var health: int = 5
+
+func take_damage(amount: int):
+	health -= amount
+
+	if health <= 0:
+		# You can add an explosion effect here later
+		queue_free() # This removes the ship from the scene
+```
+And then pasting it onto my bottom ship's script. This didn't work just yet because I also had to copy this code:
+```java
+func _on_area_entered(area: Area2D):
+	# Check if the thing we hit has the take_damage function
+	var hit_object = area.get_parent() # Gets the Top Ship node
+	if hit_object.has_method("take_damage"):
+		hit_object.take_damage(1)
+		queue_free() # Destroy the pellet after impact
+```
+And put it in the pellet top script. But that didn't work either. So, I tried connecting the area-entered node to the top pellet, but that only seemed to hit the top ship. I tried changing the name of the function to `take_diff_damage` for the top pellet and the player bottom ship. DIdn't work. Then I tried changing the scene tree up py adding a collision and area 2d node to the player's sprite. That didn't get the ship to be hit either. So, then I asked, "what if the collision shape isn't at the global position at the top ship?"
+
+Checking that it does NOTHING!! I changed the type of my main player ship to be a sprite 2d node with a collision shape. But no matter how much googling I do, it never hits the top ship. I try Youtube tutorials, but after countless hours of talking to Google AI and sending in screenshots, I was finally able to get the ships to work and get hit with their pellets. I will now show you the scripts I ended up with for this code
+
+Player's pellet:
+```java
+func _on_area_entered(area: Area2D) -> void:
+    # Check if the thing we hit has the take_damage function
+    var hit_object = area.get_parent() # Gets the Top Ship node
+    if hit_object.is_in_group("enemies") and hit_object.has_method("take_damage"):
+        hit_object.take_damage(1)
+        queue_free() # Destroy the pellet after impact
+```
+
+Top ship:
+```java
+func _on_area_entered(area: Area2D) -> void:
+	# Check if the thing that hit us is a PLAYER pellet
+	if area.is_in_group("player_bullets"):
+		take_damage(1)
+		area.queue_free() # Destroy the pellet that hit us
+```
+Keep in mind, Google also intorduced me to groups which were very helpful with me when figuring out what to put in where.
+* Pellet - player_bullets
+* Pellet Top - enemy_bullets
+* Top Ship - enemies
+* Player - players
+
+Enemy's pellet:
+```java
+func _on_Enemy_area_entered(area: Area2D) -> void:
+	var hit_obj = area.get_parent()
+
+	if hit_obj.is_in_group("players") and hit_obj.has_method("take_damage"):
+		hit_obj.take_damage(1)
+		queue_free()
+```
+
+Player ship:
+```java
+func _on_area_entered(area: Area2D) -> void:
+	# Only take damage from ENEMY pellets
+	if area.is_in_group("enemy_bullets"):
+		take_damage(1)
+
+func take_damage(amount: int):
+	health -= amount
+
+	if health <= 0:
+		// You can add an explosion effect here later
+		queue_free()
+```
+I also did some other changes where I fixed the layering and masking the of both ships so, they could actually hit probably. The result I got with all this code was that both ships would hit each other and after the bottom ship dealt enough damage, the ships would disappear. Which would probably be the best time to put a "Game Over" screen, but with how much time I put into this one day, I decided to leave that for tomorrow.
+
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
