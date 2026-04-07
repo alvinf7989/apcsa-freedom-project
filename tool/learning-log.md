@@ -269,6 +269,49 @@ func take_damage(amount: int):
 ```
 I also did some other changes where I fixed the layering and masking the of both ships so, they could actually hit probably. The result I got with all this code was that both ships would hit each other and after the bottom ship dealt enough damage, the ships would disappear. Which would probably be the best time to put a "Game Over" screen, but with how much time I put into this one day, I decided to leave that for tomorrow.
 
+### Day 18 - 4/7/26
+Well well well. Looks like we're on the next day which was yesterday's tomorrow. I've decided to git clne that directory with my game project into my IDE to try and make commits to it. But the most important thing I'll be doing here is trying to add text once the plyaer's ship has actually been damaged. So I went to Google, sent in a screenshot, and it told me the best thing to do was to add a signal in my player ship script.
+```java
+signal player_died
+```
+This is to define the signal, which is then emitted when the player's health is less than or equal to 0.
+```java
+if health <= 0:
+		player_died.emit()
+```
+Google also told me to add a label as the child node in my Main scene, until I realized the main scene is the menu and I actually have to add the label in my shooter area scene. The problem is adding the game_over label. Google gave me all this code that allows the game over screen to work but
+```java
+func _ready():
+	// Hide the text immediately when the game starts
+	game_over_label.hide()
+
+	// Connect to the player's signal
+	player.player_died.connect(_on_player_died)
+
+func _on_player_died():
+	// This runs the moment queue_free() is called in the player script
+	game_over_label.show()
+```
+This didn't work because I didn't read the code fully. So after more codes were given and reading the code, these were the final variables declared
+```java
+@onready var player = get_node("../CharacterBody2D")
+@onready var game_over_label = $ParallaxLayer/gameover
+```
+And this was my final code for the shooter area
+```java
+func _ready():
+	game_over_label.hide()
+
+	if player:
+		player.player_died.connect(_on_player_died)
+	else:
+		print("Still can't find the player! Check the name in the Scene Tree.")
+
+func _on_player_died():
+	// This runs the moment queue_free() is called in the player script
+	game_over_label.show()
+```
+Now, it's necessary for me to hide the game over text using the `.hide()` and `.show()` methods. I added text to the game over label by going to the inspector tab and seeing the text box and filling it with the text "GAME OVER!". But in the end, this is what my Game over screen looks like.![](../screenshots/game-over.png) At least this didn't take as long as yesterday.
 
 <!--
 * Links you used today (websites, videos, etc)
