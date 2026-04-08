@@ -313,6 +313,33 @@ func _on_player_died():
 ```
 Now, it's necessary for me to hide the game over text using the `.hide()` and `.show()` methods. I added text to the game over label by going to the inspector tab and seeing the text box and filling it with the text "GAME OVER!". But in the end, this is what my Game over screen looks like.![](../screenshots/game-over.png) At least this didn't take as long as yesterday.
 
+### Day 19 - 4/8/26
+Yeah, so it turns out I gotta turn in the url of the code and preview by next Monday. This means I'm doing the final task right now, which is to have text displaying "YOU WIN!". At first I thought of using the same methods with the game over label as yesterday.
+```java
+func _on_top_died():
+	winner_label.show()
+```
+Before I put in the code above, I added the winner label to display that the player has won the game. I've hidden the label at the ready function like the game over label. What got me to google though was the ready fuction in the shooter area script, where the if statement connects the player.
+```java
+func _ready():
+	game_over_label.hide()
+	winner_label.hide()
+
+	if player:
+		player.player_died.connect(_on_player_died)
+	else:
+		print("Still can't find the player! Check the name in the Scene Tree.")
+```
+So, Google told me to add another `if` statement that's similar to the player's statement
+```java
+if top_ship:
+		top_ship.top_died.connect(_on_top_died)
+```
+Now, I'm close to finishing this final task, but I gotta figure out the path for the top ship since it's in a different scene. Turns out this is what the path looks like from the shooter area scene.
+```java
+@onready var top_ship = get_node("../CharacterBody2D/Top Ship")
+```
+And with that, I'm finall able to get the text "YOU WIN!" to pop up. And that concludes the MVP of my product.
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
