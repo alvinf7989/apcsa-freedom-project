@@ -1,12 +1,56 @@
 # Entry 5
 ##### 4/1/26
 
-Another day calls for another blog entry. Yes, this was done one April 1st. No, this is not a joke entry. In this entry I will describe the days that I've worked on my Godot project and followed along with my plan. So without further ado let's take a look at...
+Another day calls for another blog entry. Yes, this was done one April 1st. No, this is not a joke entry. In this entry I will describe the days that I've worked on my Godot project and followed along with my plan. Matter of fact, this is the entry where I finally completed my MVP of the project. So without further ado let's take a look at...
 
 ## Day 13 - 3/16/26
 Day 13 was nothing special. All I did was change the colors of the ships. How did I do that? Well, I looked through the Inspector right after putting up a screenshot of the top ship and Godot's interface and it told me to go to the Modulate property in the Visibility tab where the Inspector panel is. So I went there and this color gradient popped up ![](../screenshots/colorgrad.png) Since, I want the top ship to stand out, I changed the color to red by messing with the color gradient above.
 
 ## Day 14 - 3/20/26
+Now it's the next day and I decided to add pellets to my top ship to shoot automatically every second at the bottom ship. This is to showcase a proper vice versa 2d shooter game. Of course, looking this up on Google gave me complicated results, so I realized that it would be better if I made a separate pellet scene for the top ship.
+
+Now, I started by adding a Timer Node as the child of Top Ship to have a function happen every second as shown in the inspector section. Of course, I used code from Day 11 to have the pellets shoot at the bottom shio in the pellet scene's script for the top ship
+```java
+func shoot():
+	var p = pellet_top.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position
+```
+Google also said to call the `shoot()` function for the timer node called `_on_timer_timeout():`
+```java
+func _on_timer_timeout():
+	shoot();
+```
+I also had to connect the timeout function to the pellet node for the top ship, so it could actually be responsive. ![](../screenshots/node-panel.png) The pellets did not pop up, and after some Googling, it told me to check off Autostart, as that's what makes the pellets pop up. Tested again, and the pellets finally pop up, but they're in the wrong direction and are too big. So, what I did was change the size the same way I did with the bottom ship's pellets. I also changed the direction by replacing the `-` to a `+` in the code `position.y -= speed * delta`.
+
+## Day 15 - 3/23/26
+You may notice I'm already up to the third day for this entry, I have worked on a total of 19 days on my Godot project. The first thing I did this day, was look at my [plan](../prep/plan.md) for my MVP, and saw that the next step was to make the top ship disappear after getting hit with enough pellets. When I looked this up on Google, it showed me that the recommendation for the amount of health the ships should have is 5, so I set a variable called `health` to be equal to 5.
+```java
+@export var health: int = 5
+```
+Then the `take_health` function was thus created with the help of Google AI and inside this function first has the health get decreased by the parameter of the function
+```java
+func take_damage(amount: int):
+    health -= amount
+    print("Top ship hit! Health remaining: ", health)
+```
+Then, the `if` condition for the `health` variabe has been created to have the ship disappear when health runs out.
+```java
+    if health <= 0:
+        // You can add an explosion effect here later
+        queue_free() // This removes the ship from the scene
+```
+Google gave me a method of testing if the code works and put a print statement after `health -= amount`. (It does) After this, I made changes to my Scene tree by setting a Collision Shape as the child of the Area2D which is also the child of the Top Ship scene overall. Now comes in the `on_area_entered` function, which was created to get the pellet to function like it would like a normal 2d shooter. Inside the function egts the parent of the current node which is the Top Ship and uses the `take_damage` function from before to remove one health and once it hits the ship.
+```java
+func _on_area_entered(area: Area2D):
+	// Check if the thing we hit has the take_damage function
+	var hit_object = area.get_parent() // Gets the Top Ship node
+	if hit_object.has_method("take_damage"):
+		hit_object.take_damage(1)
+		queue_free() // Destroy the pellet after impact
+```
+
+## Day 16 - 3/30/26
 
 [Previous](entry04.md) | [Next](entry06.md)
 
