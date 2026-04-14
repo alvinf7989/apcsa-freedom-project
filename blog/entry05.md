@@ -51,6 +51,9 @@ func _on_area_entered(area: Area2D):
 ```
 
 ## Day 16 - 3/30/26
+Now today I found out that this Godot project has to go on Github, but I didn't know how to do that. Luckily, this was found in a classroom with students, which means I can ask these students about how I can have my Godot Project on Google. They showed me a video on [how to share my Godot repositories to Github](https://www.youtube.com/watch?v=qT8ut3EaIpM). When I first tried this, the repositories that I made didn't have any attributes or scenes. That's why I believe it was better to watch the whole video throughout doing this and after finishing, this is what I ended up with.![](../screenshots/gitimport.png) Now you could see for yourself how this [repository looks.](https://github.com/alvinf7989/2d-shooter-vice-versa)
+
+## Day 17 - 4/6/26
 
 [Previous](entry04.md) | [Next](entry06.md)
 
