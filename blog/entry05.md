@@ -76,7 +76,60 @@ func _on_area_entered(area: Area2D):
 ```
 And finally setting up the connections with the functions. This is when the nightmare begins. The code doesn't work and the ship at the bottom isn't getting the pellets. I tried changing the name of the `take_damage` function because I thought that the function being related to the other ship would be the issue. That's not the case, so I tried changing the scene tree enough to have a collision and area 2d node to the player's sprite. Didn't work, so then I thought, "what if the collision shape isn't at the global position at the top ship?".
 
-After changing the position, guess what? That doesn't fix anything! This is where I wanted to quit, but I
+After changing the position, guess what? That doesn't fix anything! This is where I wanted to quit, but I couldn't leave without finishing my task. This took me a lot of googling and a lot of Google AI, but I was finally able to organize how my code looks and it successfully shoots the player's ship with pellets. While, I was googling, it introduced to me to groups in Godot so you might see some instances of the groups being used in the following codes.
+
+Player's pellet:
+```java
+func _on_area_entered(area: Area2D) -> void:
+    // Check if the thing we hit has the take_damage function
+    var hit_object = area.get_parent() // Gets the Top Ship node
+    if hit_object.is_in_group("enemies") and hit_object.has_method("take_damage"):
+        hit_object.take_damage(1)
+        queue_free() # Destroy the pellet after impact
+```
+
+Top ship:
+```java
+func _on_area_entered(area: Area2D) -> void:
+	// Check if the thing that hit us is a PLAYER pellet
+	if area.is_in_group("player_bullets"):
+		take_damage(1)
+		area.queue_free() // Destroy the pellet that hit us
+```
+
+Enemy's pellet:
+```java
+func _on_Enemy_area_entered(area: Area2D) -> void:
+	var hit_obj = area.get_parent()
+
+	if hit_obj.is_in_group("players") and hit_obj.has_method("take_damage"):
+		hit_obj.take_damage(1)
+		queue_free()
+```
+
+Player ship:
+```java
+func _on_area_entered(area: Area2D) -> void:
+	# Only take damage from ENEMY pellets
+	if area.is_in_group("enemy_bullets"):
+		take_damage(1)
+
+func take_damage(amount: int):
+	health -= amount
+
+	if health <= 0:
+		// You can add an explosion effect here later
+		queue_free()
+```
+Here are all the scenes with the group names that are listed and grouped respectively.
+* Pellet - player_bullets
+* Pellet Top - enemy_bullets
+* Top Ship - enemies
+* Player - players
+
+The last thing that was fixed was the layering and masking for both ships, so they have proper hitboxes. When running this code, both ships disappear when the top ship hit's the player ship enough times, which would be a place for a "Game Over" screen, but after working hard on this, I decided to leave that for tomorrow.
+
+## Day 18 - 4/7/26
 
 [Previous](entry04.md) | [Next](entry06.md)
 
