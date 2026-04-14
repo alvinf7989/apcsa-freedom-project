@@ -54,6 +54,29 @@ func _on_area_entered(area: Area2D):
 Now today I found out that this Godot project has to go on Github, but I didn't know how to do that. Luckily, this was found in a classroom with students, which means I can ask these students about how I can have my Godot Project on Google. They showed me a video on [how to share my Godot repositories to Github](https://www.youtube.com/watch?v=qT8ut3EaIpM). When I first tried this, the repositories that I made didn't have any attributes or scenes. That's why I believe it was better to watch the whole video throughout doing this and after finishing, this is what I ended up with.![](../screenshots/gitimport.png) Now you could see for yourself how this [repository looks.](https://github.com/alvinf7989/2d-shooter-vice-versa)
 
 ## Day 17 - 4/6/26
+I'm on the next day and this is during Spring Break, and boy, this was the worst task to do on my Freedom Project. I looked at the plan and it said to put in a "Game Over" screen once the player's ship has been hit with enough pellets. I thought it would be that easy. I thought just putting this in the player ship script
+```java
+@export var health: int = 5
+
+func take_damage(amount: int):
+	health -= amount
+
+	if health <= 0:
+		# You can add an explosion effect here later
+		queue_free() # This removes the ship from the scene
+```
+(It's the same as the top ship's) And then this code
+```java
+func _on_area_entered(area: Area2D):
+	// Check if the thing we hit has the take_damage function
+	var hit_object = area.get_parent() // Gets the Top Ship node
+	if hit_object.has_method("take_damage"):
+		hit_object.take_damage(1)
+		queue_free() // Destroy the pellet after impact
+```
+And finally setting up the connections with the functions. This is when the nightmare begins. The code doesn't work and the ship at the bottom isn't getting the pellets. I tried changing the name of the `take_damage` function because I thought that the function being related to the other ship would be the issue. That's not the case, so I tried changing the scene tree enough to have a collision and area 2d node to the player's sprite. Didn't work, so then I thought, "what if the collision shape isn't at the global position at the top ship?".
+
+After changing the position, guess what? That doesn't fix anything! This is where I wanted to quit, but I
 
 [Previous](entry04.md) | [Next](entry06.md)
 
