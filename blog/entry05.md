@@ -130,6 +130,41 @@ Here are all the scenes with the group names that are listed and grouped respect
 The last thing that was fixed was the layering and masking for both ships, so they have proper hitboxes. When running this code, both ships disappear when the top ship hit's the player ship enough times, which would be a place for a "Game Over" screen, but after working hard on this, I decided to leave that for tomorrow.
 
 ## Day 18 - 4/7/26
+It's tomorrow, and before I made my Game Over screen, I git cloned my repository with my Godot project into my IDE, so I can save commits to it. Now, I googled how to add text to Godot after a certain point, and Google's AI told me to define a signal that the player has died and have that emitted when the player's health is less than or equal to 0.
+```java
+signal player_died
+
+if health <= 0:
+		player_died.emit()
+```
+This was all that was put in the player ship's script by the way. Then, I had to add a child node known as the label and then put in text saying "GAME OVER!". Google showed me how to put the GAME OVER screen on when the signal's emitted and that's when the `hide`, `connect`, & `show` methods were put into play.
+```java
+func _ready():
+	// Hide the text immediately when the game starts
+	game_over_label.hide()
+
+	// Connect to the player's signal
+	player.player_died.connect(_on_player_died)
+
+func _on_player_died():
+	// This runs the moment queue_free() is called in the player script
+	game_over_label.show()
+```
+The label is called `game_over_label` and all of this code was put in the shooter area's script. The reason the code didn't work though while I was testing it was because of the `@onready` variables. It was hard to find the location of the game_over_label when it's in a different scene compared to the player's scene. That's when I learned that I can drag the nodes into my code and drop them while holding cmd to get the `@onready` variable.
+```java
+@onready var player = get_node("../CharacterBody2D")
+@onready var game_over_label = $ParallaxLayer/gameover
+```
+Now Google also gave me a thing to test if the code works which was a print statement in an `if` statement where the `connect` method is located.
+```java
+	if player:
+		player.player_died.connect(_on_player_died)
+	else:
+		print("Still can't find the player! Check the name in the Scene Tree.")
+```
+Now with all that put together, this was my "game over" screen ![](../screenshots/game-over.png).
+
+## Day 19 - 4/8/26
 
 [Previous](entry04.md) | [Next](entry06.md)
 
