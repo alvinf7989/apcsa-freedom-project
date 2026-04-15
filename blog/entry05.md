@@ -165,6 +165,62 @@ Now Google also gave me a thing to test if the code works which was a print stat
 Now with all that put together, this was my "game over" screen ![](../screenshots/game-over.png).
 
 ## Day 19 - 4/8/26
+Alright, this was the day I was told I gotta turn in the url and preview of the code in by next week from Day 19. So, I decided to do my final task right now. SO, I already have text saying "GAME OVER", but what if I had text saying "YOU WIN" that's when I add another label and another signla and used what I learned from that previous day.
+```java
+func _on_top_died():
+	winner_label.show()
+
+func _ready():
+	game_over_label.hide()
+	winner_label.hide()
+
+	if player:
+		player.player_died.connect(_on_player_died)
+	else:
+		print("Still can't find the player! Check the name in the Scene Tree.")
+```
+The `if` statement was where I got stuck and looking at this now, I don't know why I was stuck on this. I could just remove the print statement, but instead, this is what I did.
+```java
+		top_ship.top_died.connect(_on_top_died)
+```
+There's another path issue with the `@onready` variables where I have trouble finding the node when in a different scene. But in the end, this is what I have.
+```java
+@onready var top_ship = get_node("../CharacterBody2D/Top Ship")
+```
+Of course the text placed in the YOU WIN screen is the same technique as the GAME OVER screen. And yes, the YOU WIN screen looks the same as the GAME OVER SCREEN But yeah, this pretty much wraps up my MVP for my Freedom Project. There is one day where I worked a little beyond MVP, so you get a little bonus in this entry
+
+## Day 20 - 4/9/26 (BEYOND MVP)
+So, I looke at my GAME OVER & YOU WIN screens, and noticed that both texts are too small and are moving along with the background. So what I did was go to the Inspector panel and turn on Top Level for both labels and then changed the sizes and positioning to be centered. Here's one of those screens now.![](../screenshots/youwin.png)
+<hr>
+Now, that concludes my MVP and all my tasks are finally complete. But this doesn't mean that it's the end for all my blog entries, no no no no. I gotta work more Beyond MVP and my presentation when I have the time. But for now, let's move to the next thing which is...
+
+## EDP
+For the Engineering Design Process I have been on the **Testing** part of the process while also doing some fixed, but I believe that stays in the **Testing** part of the EDP. During Spring Break, I went ahead and got to the **Improving** part of the Engineering Design Process by changing the text's visuals on the game over and winner screens.
+
+## Skills
+**Growth Mindset**: So, what this skill is is basically when you have the courage to ask for help on your project, I asked one of my students for help when trying to turn my Godot project into a Github repository to turn in for my MVP. I guess this kind of leans into **Collaboration**, but it doesn't count because the students haven't been working with me on my Godot project and were more likely helping with a the Godot repository sharing.
+
+**Time Management**: This is another skill that I've acquired because in case you noticed the dates that I've worked on my project, I've been working daily in my Spring Break by starting these subtasks from my plan every morning.
+
+**Problem Decomposition: UPDATE** Now I've broken down problems before, but since I created a plan a few months ago, I would say that breaking a task which is the MVP, into smaller subtasks is one way of describing problem decomposition.
+
+## Sources
+[Blog Entry 1](entry01.md)
+
+[Blog Entry 2](entry02.md)
+
+[Blog Entry 3](entry03.md)
+
+[Blog Entry 4](entry04.md)
+
+[My Godot Repository](https://github.com/alvinf7989/2d-shooter-vice-versa)
+
+[How to Share my Godot Repositories to Github](https://www.youtube.com/watch?v=qT8ut3EaIpM)
+
+[Screenshots](../screenshots)
+
+[My MVP Plan](../prep/plan.md)
+
 
 [Previous](entry04.md) | [Next](entry06.md)
 
