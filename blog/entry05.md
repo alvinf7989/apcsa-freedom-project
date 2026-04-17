@@ -4,50 +4,50 @@
 Another day calls for another blog entry. Yes, this was done one April 1st. No, this is not a joke entry. In this entry I will describe the days that I've worked on my Godot project and followed along with my plan. Matter of fact, this is the entry where I finally completed my MVP of the project. So without further ado let's take a look at...
 
 ## Day 13 - 3/16/26
-Day 13 was nothing special. All I did was change the colors of the ships. How did I do that? Well, I looked through the Inspector right after putting up a screenshot of the top ship and Godot's interface and it told me to go to the Modulate property in the Visibility tab where the Inspector panel is. So I went there and this color gradient popped up ![](../screenshots/colorgrad.png) Since, I want the top ship to stand out, I changed the color to red by messing with the color gradient above.
+Day 13 was nothing special. All I did was change the colors of the ships. How did I do that? Well, I looked through the Inspector right after putting up a screenshot of the top ship and Godot's interface and it told me to go to the Modulate property in the Visibility tab where the Inspector panel is. So I went there and this color gradient popped up ![](../screenshots/colorgrad.png) Since I want the top ship to stand out, I changed the color to red by messing with the color gradient above.
 
 ## Day 14 - 3/20/26
 Now it's the next day and I decided to add pellets to my top ship to shoot automatically every second at the bottom ship. This is to showcase a proper vice versa 2d shooter game. Of course, looking this up on Google gave me complicated results, so I realized that it would be better if I made a separate pellet scene for the top ship.
 
-Now, I started by adding a Timer Node as the child of Top Ship to have a function happen every second as shown in the inspector section. Of course, I used code from Day 11 to have the pellets shoot at the bottom shio in the pellet scene's script for the top ship
+Now, I started by adding a Timer Node as the child of Top Ship to have a function happen every second as shown in the inspector section. Of course, I used code from Day 11 to have the pellets shoot at the bottom ship in the pellet scene's script for the top ship
 ```java
 func shoot():
-	var p = pellet_top.instantiate()
-	get_parent().add_child(p)
-	p.global_position = global_position
+   var p = pellet_top.instantiate()
+   get_parent().add_child(p)
+   p.global_position = global_position
 ```
 Google also said to call the `shoot()` function for the timer node called `_on_timer_timeout():`
 ```java
 func _on_timer_timeout():
-	shoot();
+   shoot();
 ```
 I also had to connect the timeout function to the pellet node for the top ship, so it could actually be responsive. ![](../screenshots/node-panel.png) The pellets did not pop up, and after some Googling, it told me to check off Autostart, as that's what makes the pellets pop up. Tested again, and the pellets finally pop up, but they're in the wrong direction and are too big. So, what I did was change the size the same way I did with the bottom ship's pellets. I also changed the direction by replacing the `-` to a `+` in the code `position.y -= speed * delta`.
 
 ## Day 15 - 3/23/26
-You may notice I'm already up to the third day for this entry, I have worked on a total of 19 days on my Godot project. The first thing I did this day, was look at my [plan](../prep/plan.md) for my MVP, and saw that the next step was to make the top ship disappear after getting hit with enough pellets. When I looked this up on Google, it showed me that the recommendation for the amount of health the ships should have is 5, so I set a variable called `health` to be equal to 5.
+You may notice I'm already up to the third day for this entry, I have worked on a total of 19 days on my Godot project. The first thing I did this day was look at my [plan](../prep/plan.md) for my MVP, and saw that the next step was to make the top ship disappear after getting hit with enough pellets. When I looked this up on Google, it showed me that the recommendation for the amount of health the ships should have is 5, so I set a variable called `health` to be equal to 5.
 ```java
 @export var health: int = 5
 ```
 Then the `take_health` function was thus created with the help of Google AI and inside this function first has the health get decreased by the parameter of the function
 ```java
 func take_damage(amount: int):
-    health -= amount
-    print("Top ship hit! Health remaining: ", health)
+   health -= amount
+   print("Top ship hit! Health remaining: ", health)
 ```
-Then, the `if` condition for the `health` variabe has been created to have the ship disappear when health runs out.
+Then, the `if` condition for the `health` variable has been created to have the ship disappear when health runs out.
 ```java
-    if health <= 0:
-        // You can add an explosion effect here later
-        queue_free() // This removes the ship from the scene
+   if health <= 0:
+       // You can add an explosion effect here later
+       queue_free() // This removes the ship from the scene
 ```
-Google gave me a method of testing if the code works and put a print statement after `health -= amount`. (It does) After this, I made changes to my Scene tree by setting a Collision Shape as the child of the Area2D which is also the child of the Top Ship scene overall. Now comes in the `on_area_entered` function, which was created to get the pellet to function like it would like a normal 2d shooter. Inside the function egts the parent of the current node which is the Top Ship and uses the `take_damage` function from before to remove one health and once it hits the ship.
+Google gave me a method of testing if the code works and put a print statement after `health -= amount`. (It does) After this, I made changes to my Scene tree by setting a Collision Shape as the child of the Area2D which is also the child of the Top Ship scene overall. Now comes in the `on_area_entered` function, which was created to get the pellet to function like it would a normal 2d shooter. Inside the function gets the parent of the current node which is the Top Ship and uses the `take_damage` function from before to remove one health and once it hits the ship.
 ```java
 func _on_area_entered(area: Area2D):
-	// Check if the thing we hit has the take_damage function
-	var hit_object = area.get_parent() // Gets the Top Ship node
-	if hit_object.has_method("take_damage"):
-		hit_object.take_damage(1)
-		queue_free() // Destroy the pellet after impact
+   // Check if the thing we hit has the take_damage function
+   var hit_object = area.get_parent() // Gets the Top Ship node
+   if hit_object.has_method("take_damage"):
+       hit_object.take_damage(1)
+       queue_free() // Destroy the pellet after impact
 ```
 
 ## Day 16 - 3/30/26
@@ -59,67 +59,67 @@ I'm on the next day and this is during Spring Break, and boy, this was the worst
 @export var health: int = 5
 
 func take_damage(amount: int):
-	health -= amount
+   health -= amount
 
-	if health <= 0:
-		# You can add an explosion effect here later
-		queue_free() # This removes the ship from the scene
+   if health <= 0:
+       # You can add an explosion effect here later
+       queue_free() # This removes the ship from the scene
 ```
 (It's the same as the top ship's) And then this code
 ```java
 func _on_area_entered(area: Area2D):
-	// Check if the thing we hit has the take_damage function
-	var hit_object = area.get_parent() // Gets the Top Ship node
-	if hit_object.has_method("take_damage"):
-		hit_object.take_damage(1)
-		queue_free() // Destroy the pellet after impact
+   // Check if the thing we hit has the take_damage function
+   var hit_object = area.get_parent() // Gets the Top Ship node
+   if hit_object.has_method("take_damage"):
+       hit_object.take_damage(1)
+       queue_free() // Destroy the pellet after impact
 ```
 And finally setting up the connections with the functions. This is when the nightmare begins. The code doesn't work and the ship at the bottom isn't getting the pellets. I tried changing the name of the `take_damage` function because I thought that the function being related to the other ship would be the issue. That's not the case, so I tried changing the scene tree enough to have a collision and area 2d node to the player's sprite. Didn't work, so then I thought, "what if the collision shape isn't at the global position at the top ship?".
 
-After changing the position, guess what? That doesn't fix anything! This is where I wanted to quit, but I couldn't leave without finishing my task. This took me a lot of googling and a lot of Google AI, but I was finally able to organize how my code looks and it successfully shoots the player's ship with pellets. While, I was googling, it introduced to me to groups in Godot so you might see some instances of the groups being used in the following codes.
+After changing the position, guess what? That doesn't fix anything! This is where I wanted to quit, but I couldn't leave without finishing my task. This took me a lot of googling and a lot of Google AI, but I was finally able to organize how my code looks and it successfully shoots the player's ship with pellets. While I was googling, it introduced me to groups in Godot so you might see some instances of the groups being used in the following codes.
 
 Player's pellet:
 ```java
 func _on_area_entered(area: Area2D) -> void:
-    // Check if the thing we hit has the take_damage function
-    var hit_object = area.get_parent() // Gets the Top Ship node
-    if hit_object.is_in_group("enemies") and hit_object.has_method("take_damage"):
-        hit_object.take_damage(1)
-        queue_free() # Destroy the pellet after impact
+   // Check if the thing we hit has the take_damage function
+   var hit_object = area.get_parent() // Gets the Top Ship node
+   if hit_object.is_in_group("enemies") and hit_object.has_method("take_damage"):
+       hit_object.take_damage(1)
+       queue_free() # Destroy the pellet after impact
 ```
 
 Top ship:
 ```java
 func _on_area_entered(area: Area2D) -> void:
-	// Check if the thing that hit us is a PLAYER pellet
-	if area.is_in_group("player_bullets"):
-		take_damage(1)
-		area.queue_free() // Destroy the pellet that hit us
+   // Check if the thing that hit us is a PLAYER pellet
+   if area.is_in_group("player_bullets"):
+       take_damage(1)
+       area.queue_free() // Destroy the pellet that hit us
 ```
 
 Enemy's pellet:
 ```java
 func _on_Enemy_area_entered(area: Area2D) -> void:
-	var hit_obj = area.get_parent()
+   var hit_obj = area.get_parent()
 
-	if hit_obj.is_in_group("players") and hit_obj.has_method("take_damage"):
-		hit_obj.take_damage(1)
-		queue_free()
+   if hit_obj.is_in_group("players") and hit_obj.has_method("take_damage"):
+       hit_obj.take_damage(1)
+       queue_free()
 ```
 
 Player ship:
 ```java
 func _on_area_entered(area: Area2D) -> void:
-	# Only take damage from ENEMY pellets
-	if area.is_in_group("enemy_bullets"):
-		take_damage(1)
+   # Only take damage from ENEMY pellets
+   if area.is_in_group("enemy_bullets"):
+       take_damage(1)
 
 func take_damage(amount: int):
-	health -= amount
+   health -= amount
 
-	if health <= 0:
-		// You can add an explosion effect here later
-		queue_free()
+   if health <= 0:
+       // You can add an explosion effect here later
+       queue_free()
 ```
 Here are all the scenes with the group names that are listed and grouped respectively.
 * Pellet - player_bullets
@@ -127,61 +127,61 @@ Here are all the scenes with the group names that are listed and grouped respect
 * Top Ship - enemies
 * Player - players
 
-The last thing that was fixed was the layering and masking for both ships, so they have proper hitboxes. When running this code, both ships disappear when the top ship hit's the player ship enough times, which would be a place for a "Game Over" screen, but after working hard on this, I decided to leave that for tomorrow.
+The last thing that was fixed was the layering and masking for both ships, so they have proper hitboxes. When running this code, both ships disappear when the top ship hits the player ship enough times, which would be a place for a "Game Over" screen, but after working hard on this, I decided to leave that for tomorrow.
 
 ## Day 18 - 4/7/26
-It's tomorrow, and before I made my Game Over screen, I git cloned my repository with my Godot project into my IDE, so I can save commits to it. Now, I googled how to add text to Godot after a certain point, and Google's AI told me to define a signal that the player has died and have that emitted when the player's health is less than or equal to 0.
+It's tomorrow, and before I made my Game Over screen, I cloned my repository with my Godot project into my IDE, so I can save commits to it. Now, I googled how to add text to Godot after a certain point, and Google's AI told me to define a signal that the player has died and have that emitted when the player's health is less than or equal to 0.
 ```java
 signal player_died
 
 if health <= 0:
-		player_died.emit()
+       player_died.emit()
 ```
 This was all that was put in the player ship's script by the way. Then, I had to add a child node known as the label and then put in text saying "GAME OVER!". Google showed me how to put the GAME OVER screen on when the signal's emitted and that's when the `hide`, `connect`, & `show` methods were put into play.
 ```java
 func _ready():
-	// Hide the text immediately when the game starts
-	game_over_label.hide()
+   // Hide the text immediately when the game starts
+   game_over_label.hide()
 
-	// Connect to the player's signal
-	player.player_died.connect(_on_player_died)
+   // Connect to the player's signal
+   player.player_died.connect(_on_player_died)
 
 func _on_player_died():
-	// This runs the moment queue_free() is called in the player script
-	game_over_label.show()
+   // This runs the moment queue_free() is called in the player script
+   game_over_label.show()
 ```
 The label is called `game_over_label` and all of this code was put in the shooter area's script. The reason the code didn't work though while I was testing it was because of the `@onready` variables. It was hard to find the location of the game_over_label when it's in a different scene compared to the player's scene. That's when I learned that I can drag the nodes into my code and drop them while holding cmd to get the `@onready` variable.
 ```java
 @onready var player = get_node("../CharacterBody2D")
 @onready var game_over_label = $ParallaxLayer/gameover
 ```
-Now Google also gave me a thing to test if the code works which was a print statement in an `if` statement where the `connect` method is located.
+Now Google also gave me a thing to test if the code works, which was a print statement in an `if` statement where the `connect` method is located.
 ```java
-	if player:
-		player.player_died.connect(_on_player_died)
-	else:
-		print("Still can't find the player! Check the name in the Scene Tree.")
+   if player:
+       player.player_died.connect(_on_player_died)
+   else:
+       print("Still can't find the player! Check the name in the Scene Tree.")
 ```
 Now with all that put together, this was my "game over" screen ![](../screenshots/game-over.png).
 
 ## Day 19 - 4/8/26
-Alright, this was the day I was told I gotta turn in the url and preview of the code in by next week from Day 19. So, I decided to do my final task right now. SO, I already have text saying "GAME OVER", but what if I had text saying "YOU WIN" that's when I add another label and another signla and used what I learned from that previous day.
+Alright, this was the day I was told I gotta turn in the url and send in a preview of the code by next week from Day 19. So, I decided to do my final task right now. SO, I already have text saying "GAME OVER", but what if I had text saying "YOU WIN" that's when I add another label and another signal and use what I learned from that previous day.
 ```java
 func _on_top_died():
-	winner_label.show()
+   winner_label.show()
 
 func _ready():
-	game_over_label.hide()
-	winner_label.hide()
+   game_over_label.hide()
+   winner_label.hide()
 
-	if player:
-		player.player_died.connect(_on_player_died)
-	else:
-		print("Still can't find the player! Check the name in the Scene Tree.")
+   if player:
+       player.player_died.connect(_on_player_died)
+   else:
+       print("Still can't find the player! Check the name in the Scene Tree.")
 ```
 The `if` statement was where I got stuck and looking at this now, I don't know why I was stuck on this. I could just remove the print statement, but instead, this is what I did.
 ```java
-		top_ship.top_died.connect(_on_top_died)
+       top_ship.top_died.connect(_on_top_died)
 ```
 There's another path issue with the `@onready` variables where I have trouble finding the node when in a different scene. But in the end, this is what I have.
 ```java
@@ -192,17 +192,18 @@ Of course the text placed in the YOU WIN screen is the same technique as the GAM
 ## Day 20 - 4/9/26 (BEYOND MVP)
 So, I looke at my GAME OVER & YOU WIN screens, and noticed that both texts are too small and are moving along with the background. So what I did was go to the Inspector panel and turn on Top Level for both labels and then changed the sizes and positioning to be centered. Here's one of those screens now.![](../screenshots/youwin.png)
 <hr>
-Now, that concludes my MVP and all my tasks are finally complete. But this doesn't mean that it's the end for all my blog entries, no no no no. I gotta work more Beyond MVP and my presentation when I have the time. But for now, let's move to the next thing which is...
+Now, that concludes my MVP and all my tasks are finally complete. But this doesn't mean that it's the end for all my blog entries, no no no no. I gotta work more beyond MVP and my presentation when I have the time. But for now, let's move to the next thing which is...
 
 ## EDP
 For the Engineering Design Process I have been on the **Testing** part of the process while also doing some fixed, but I believe that stays in the **Testing** part of the EDP. During Spring Break, I went ahead and got to the **Improving** part of the Engineering Design Process by changing the text's visuals on the game over and winner screens.
 
 ## Skills
-**Growth Mindset**: So, what this skill is is basically when you have the courage to ask for help on your project, I asked one of my students for help when trying to turn my Godot project into a Github repository to turn in for my MVP. I guess this kind of leans into **Collaboration**, but it doesn't count because the students haven't been working with me on my Godot project and were more likely helping with a the Godot repository sharing.
+**Growth Mindset**: So, what this skill is is basically when you have the courage to ask for help on your project, I asked one of my students for help when trying to turn my Godot project into a Github repository to turn in for my MVP. I guess this kind of leans into **Collaboration**, but it doesn't count because the students haven't been working with me on my Godot project and were more likely helping with the Godot repository sharing.
 
 **Time Management**: This is another skill that I've acquired because in case you noticed the dates that I've worked on my project, I've been working daily in my Spring Break by starting these subtasks from my plan every morning.
 
-**Problem Decomposition: UPDATE** Now I've broken down problems before, but since I created a plan a few months ago, I would say that breaking a task which is the MVP, into smaller subtasks is one way of describing problem decomposition.
+**Problem Decomposition: UPDATE** Now I've broken down problems before, but since I created a plan a few months ago, I would say that breaking a task, which is the MVP, into smaller subtasks is one way of describing problem decomposition.
+
 
 ## Sources
 [Blog Entry 1](entry01.md)
