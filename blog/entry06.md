@@ -18,6 +18,30 @@ So what I did was make vsual changes to the menu by changing the positioning of 
 
 Now I also changed the background to a different color like blue to make the play screen look more unique by going to project settings and seeing this.![](../screenshots/UIbg.png) Because of this, my Play screen now looks like this. ![](../screenshots/playscreen.png) This means I can check off the visual changes made to the menu. Psyche! I have to add the label for people to know the game that they will play once hitting the play button. This is an example of me using Consideration. So, I added a label node to my main scene and put in the text "Vice Versa Shooter Game". Then, I went into Inspector, set the Horizontal Align to center and changed the scale until the title was purely visible. Now it finally looks like this. ![](../screenshots/playscreen2.png) Now, I can check this off my plan.
 
+## Day 2 of Beyond MVP - 4/28/2026
+Now it's the next day and I decided to try and have the ships flash red when hit. Of course I won't know how to do that myself, so I used Google. Now I did know that I have to update the `take_damage` function in the ship's scripts. Google showed me this thing called a "tween" that changes the color quickly before turning back to normal. I created a variable called the tween and used the `create_tween` method.
+```java
+var tween = create_tween()
+tween.tween_property($Sprite2D, "modulate", Color.RED, 0.05)
+```
+The other line of code you use is what's responsible for turning the top ship red when hit by the player's pellet. There's also that same line of code where it changes to normal.
+```java
+tween.tween_property($Sprite2D, "modulate", Color.WHITE, 0.1)
+```
+Google left a note telling me to replace Sprite2D with the name of my ship's Sprite node. I musunderstood this and put "top_ship". This was asking for the location. After some tweaking, this is what I ended up with.
+```java
+func take_damage(amount: int):
+	health -= amount
+	var tween = create_tween()
+	tween.tween_property($".", "modulate", Color.RED, 0.05)
+	tween.tween_property($".", "modulate", Color.WHITE, 0.1)
+
+	if health <= 0:
+		top_died.emit()
+		// You can add an explosion effect here later
+		queue_free() // This removes the ship from the scene
+```
+Now when this was put into play, the top ship flashed to normal, so I chanegd the Self modulation color in the inspector tab and gave the appropriate color. Now I've played with this code and noticed it's a little hard to actually win when I put my top ship's health at 20. So, I increased the pellet speed for my player's ship to 1,000.
 
 
 [Previous](entry05.md) | [Next](entry07.md)
