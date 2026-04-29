@@ -21,9 +21,9 @@ The project is a Vice Versa 2d Fixed Shooter Game that I made using Godot.
 #### Beyond MVP
 
 - [x] Make visual changes to the menu
-- [ ] Make visual changes to the gameplay
-  - [ ] Have the ships flash red when hit
-- [ ] Add health bar for ships
+- [x] Make visual changes to the gameplay
+  - [x] Have the ships flash red when hit
+- [x] Add health bar for ships
 - [ ] Add timer
 
 
