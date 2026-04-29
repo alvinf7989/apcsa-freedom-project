@@ -43,6 +43,23 @@ func take_damage(amount: int):
 ```
 Now when this was put into play, the top ship flashed to normal, so I chanegd the Self modulation color in the inspector tab and gave the appropriate color. Now I've played with this code and noticed it's a little hard to actually win when I put my top ship's health at 20. So, I increased the pellet speed for my player's ship to 1,000.
 
+## Day 3 of Beyond MVP - 4/29/2026
+Alright, it's the next day of Beyond MVP and I decided to go throguh what the people have been saying as the grows: Adding a health bar. This requires the use of Googling and it introduced me to the ProgressBar node which shows the percentage of health the player has, so I added this to the chld node along with importing a variable to represent that.
+```java
+@onready var p_health_bar: ProgressBar = $PlayerShip/pHealthBar
+```
+I also changed the max value on the inspector side to the amount of health that the player ship has. This is the code I used to set up my health
+```java
+	if p_health_bar:
+		p_health_bar.value = health
+```
+This was in the `take_damage` function. The next code is in the `_ready` function
+```java
+	p_health_bar.max_value = health
+	p_health_bar.value = health
+```
+I was almost done, but when running the code, I realized the health bar's upside down, so I went to the 2D section on the top of Godot and rotated the bar. What I also did was change the collision shape to hit all ships and make the other two ships next to the player smaller. Now that the player ships health bar was done, the same would happen for the top ship. Now that that's done I did some changes to the percentage bars and now my screen now looks like this. ![](../screenshots/gameplay.png) In addition, I'll show you how the 2D set of that looks in the Player scene. ![](../screenshots/2dset.png)
+
 
 [Previous](entry05.md) | [Next](entry07.md)
 
