@@ -14,7 +14,7 @@
   - [x] Have Top Ship sprite move side to side (deadline: 3/4)
   - [x] Have the main ship sprite (bottom) shoot pellets at top ship (deadline: 3/10)
   - [x] Have top ship disappear when enough pellet damage has been dealt. (deadline: 3/25)
-  - [x] Have text pop up saying "Run Code again to Start Over" after Gaming Over. (deadline: 4/7)
+  - [x] Have text pop up saying "Game Over" after Gaming Over. (deadline: 4/7)
   - [x] Have text pop up saying "YOU WIN!" (deadline: 4/13)
 
 The project is a Vice Versa 2d Fixed Shooter Game that I made using Godot.

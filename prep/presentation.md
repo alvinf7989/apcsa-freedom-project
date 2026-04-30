@@ -1,16 +1,22 @@
 # Presentation Plan
 
 ## Hook
-* 
+* Ask who likes Galaga and explain how it works.
 
 ## Product
-* 
+* Introduce my Vice Versa 2D shooter game via url preview
 
 ## Process
-* 
+* Show my plans from MVP & Beyond MVP
+* Show code snippets of the pellets and the ship's scripts.
+* Explain the challenge of making the Game Over & You Win screens.
 
 ## Conclusion
-* 
+* Url to Preview of Project
+* Takeaways:
+  * Learn from the feedback you get from testers.
+  * There's always room for improvement.
+
 
 <!-- EXAMPLE
 
