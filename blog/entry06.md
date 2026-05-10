@@ -60,6 +60,50 @@ This was in the `take_damage` function. The next code is in the `_ready` functio
 ```
 I was almost done, but when running the code, I realized the health bar's upside down, so I went to the 2D section on the top of Godot and rotated the bar. What I also did was change the collision shape to hit all ships and make the other two ships next to the player smaller. Now that the player ships health bar was done, the same would happen for the top ship. Now that that's done I did some changes to the percentage bars and now my screen now looks like this. ![](../screenshots/gameplay.png) In addition, I'll show you how the 2D set of that looks in the Player scene. ![](../screenshots/2dset.png)
 
+## Presentation
+Now that my Beyond MVP tasks were finished I had the presejntation and the elevator expo left to talk about in this entry, which means this is the last entry of APCSA and it's the end of all my Freedom Project entries that I've done since Sophomore year. In the sources or [this link](../prep/presentation.md), you'll see that I set up my plans for what I'll include in my presentation.
+
+- Since my project is a vice versa 2D Shooter, I decided that my hook would be to ask the audience whi likes Galaga and explain how it works, so some people know what Galaga is.
+
+- Then for my product I introduced my Vice Versa 2D shooter game via url preview by having that link in the screenshot that I put in my [presentation slides](https://docs.google.com/presentation/d/1L1pmkytvkNs3h4wF66MrrdmPFS5RxBlWtAFI9ewUmqo/edit?slide=id.g3db6786bad8_0_496#slide=id.g3db6786bad8_0_496).
+
+- Next is the Process and I decided to show my plans from MVP & Beyond MVP, code snippets of the pellets and the ship's scripts, and I explained the challenhe of making the Game over screens because there was this day that it took me forever to trey and code the ships to disappear when enough damage from the pellets have been dealt.
+
+- Finally for my conclusion, I put in the url to my preview because I don't know how to make the Godot file accessible to public and I added two takeaways for this project
+	1. Learn from the feedback you get from testers.
+	2. There's always room for improvement.
+
+I put a skill from the [hstatsep website](https://hstatsep.github.io/students/) about consideration, which is a skill I acquired and will take about later.
+
+But yeah, that's it for the presentation part. Now let's talk about the Expo elevator pitch.
+
+## EDP
+
+## Skills
+
+## Sources
+[My MVP Plan](../prep/plan.md)
+
+[My Presentation Plan](../prep/presentation.md)
+
+[My Presentation Slides](https://docs.google.com/presentation/d/1L1pmkytvkNs3h4wF66MrrdmPFS5RxBlWtAFI9ewUmqo/edit?slide=id.g3db6786bad8_0_496#slide=id.g3db6786bad8_0_496)
+
+[HSTAT SEP Site](https://hstatsep.github.io/students/)
+
+[Blog Entry 1](entry01.md)
+
+[Blog Entry 2](entry02.md)
+
+[Blog Entry 3](entry03.md)
+
+[Blog Entry 4](entry04.md)
+
+[Blog Entry 5](entry05.md)
+
+[My Godot Repository](https://github.com/alvinf7989/2d-vice-versa-shooter-alvin)
+
+[Screenshots](../screenshots)
+
 
 [Previous](entry05.md) | [Next](entry07.md)
 
