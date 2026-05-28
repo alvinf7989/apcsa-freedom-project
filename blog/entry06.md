@@ -77,6 +77,9 @@ I put a skill from the [hstatsep website](https://hstatsep.github.io/students/) 
 
 But yeah, that's it for the presentation part. Now let's talk about the Expo elevator pitch.
 
+## EXPO (Elevator Pitch)
+Now for this part of the entry, I didn't have as much time because 2nd period is when I'm supposed to leave to my SDI trip. So because of that, I was able to be one of the first students to get interviewed about my project. I talked to the judges about Galaga and compared that game to my prohject to introduce. Now, I didn't realize that the judges had 90 seconds to go to each project. For this elevator pitch, I showed a live preview of the 2D vice versa shooter project 
+
 ## EDP
 
 ## Skills
