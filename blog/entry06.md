@@ -78,9 +78,23 @@ I put a skill from the [hstatsep website](https://hstatsep.github.io/students/) 
 But yeah, that's it for the presentation part. Now let's talk about the Expo elevator pitch.
 
 ## EXPO (Elevator Pitch)
-Now for this part of the entry, I didn't have as much time because 2nd period is when I'm supposed to leave to my SDI trip. So because of that, I was able to be one of the first students to get interviewed about my project. I talked to the judges about Galaga and compared that game to my prohject to introduce. Now, I didn't realize that the judges had 90 seconds to go to each project. For this elevator pitch, I showed a live preview of the 2D vice versa shooter project 
+Now for this part of the entry, I didn't have as much time because 2nd period is when I'm supposed to leave to my SDI trip. So because of that, I was able to be one of the first students to get interviewed about my project. I talked to the judges about Galaga and compared that game to my prohject to introduce.
+
+Now, I didn't realize that the judges had 90 seconds to go to each project. For this elevator pitch, I showed a live preview of the 2D vice versa shooter project and talked about the following:
+* How I made the pellets
+* That one day where I struggled with making the ships disappear
+* The engine I used
+
+For other people that came to view my project, I also did the same thing, but I also paid attention to the questions the other people hagve previously asked sucha s the coding language of Godot, or what I would do to make this better. One student even asked me what inspired me to make this project. To that I said, my love for video games, simple ideas, and switching roles.
+
+When answering questions on what I would do to make my project better, I said I would address any more grows and feedback the students gave me like adding a timer and more levels. My takeaway for my project was if I had more time, I would be able to make more possibilities in my project. As for the Elevator Pitch, I would show off as much code as possible and explain it, while the viewers see the code.
+
+<hr>
+
+Welp, this is the final blog entry and I just want to look how far I have come from SEP. SEP10 was when I first started creating blog entries, where I believe the maximum I made was always 7. In the first year of Software Engineering, I was learning Web Design. Year 2, Github. And now Year 3 has arrived and I learned Java. I just want to thank the SEP community and staff for taking me on this path to my future. Of course, I also wouldn't have done this without Intro to Computer Science in Freshmen Year. But with all that, the writeups are finished and this is my last blog. I'm Alvin Frias, and these were my Freedom Project Blog Entries.
 
 ## EDP
+**WAIT!!** Before I properly end this blog entry, I, of course, have to talk about the final part of my Engineering Design Process.
 
 ## Skills
 
