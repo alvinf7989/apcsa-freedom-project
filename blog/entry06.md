@@ -94,9 +94,14 @@ When answering questions on what I would do to make my project better, I said I 
 Welp, this is the final blog entry and I just want to look how far I have come from SEP. SEP10 was when I first started creating blog entries, where I believe the maximum I made was always 7. In the first year of Software Engineering, I was learning Web Design. Year 2, Github. And now Year 3 has arrived and I learned Java. I just want to thank the SEP community and staff for taking me on this path to my future. Of course, I also wouldn't have done this without Intro to Computer Science in Freshmen Year. But with all that, the writeups are finished and this is my last blog. I'm Alvin Frias, and these were my Freedom Project Blog Entries.
 
 ## EDP
-**WAIT!!** Before I properly end this blog entry, I, of course, have to talk about the final part of my Engineering Design Process.
+**WAIT!!** Before I properly end this blog entry, I, of course, have to talk about the final part of my Engineering Design Process & the skills that I've acquired. Before going in the **Communicating** part of the process, I talked about going in the **Improving** part of the Engineering Design Process, as I wanted to address the early feedback from the students that tried out my project. I added a health bar and added visual adjustments because of that feedback.
+
+Now I'm at the **Communicating** part of the process, where I communicated with the judges and other people interested in viewing my project by using what I learned in the presentation and answered any questions before they were asked by following the trend on what questions were asked commonly about the project
 
 ## Skills
+**Consideration**: For this skill, I did a lot of considering when working beyond MVP. This was because of the feedback given tpo me by other students. The most common grow they gave was that I needed to add health bars, so I added that as one of my tasks beyond MVP in my [plan](../prep/plan.md).
+
+**Communication**: This was another new skill that I've acquired and it's also a skill that most likely everyone at the elevator pitch will acquire when presenting their project. An example of communication is public speaking in a presentation. In this case, I have done a presentation where I spoke publicly about my Vice Versa 2D Shooter project and used words more orally, which is why there weren't as much in the [slides for my presentation](https://docs.google.com/presentation/d/1L1pmkytvkNs3h4wF66MrrdmPFS5RxBlWtAFI9ewUmqo/edit?slide=id.g3db6786bad8_0_496#slide=id.g3db6786bad8_0_496). I guess the elevator pitch is another example of communication as I communicated my project and what it was about with other students and judges that were interested in viewing my project.
 
 ## Sources
 [My MVP Plan](../prep/plan.md)
