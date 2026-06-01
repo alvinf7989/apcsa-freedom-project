@@ -1,25 +1,25 @@
 # Entry 6
 ##### 4/27/26
 
-Alrighty, It is time for the next entry where I talk about the steps that I took to make my Beyond MVP. As you know, I already finsihed all my tasks fro the MVP, so now I'm going to be working beyond MVP starting today.
+Alrighty, It is time for the next entry where I talk about the steps that I took to make my Beyond MVP. As you know, I already finished all my tasks for the MVP, so now I'm going to be working beyond MVP starting today.
 
 ## How I started it
-This how I started setting up my Beyond MVP list which can be seen on my [plan](../prep/plan.md). In class, we had a period where we walked to other people's projects at their MVP and we would try them and give them grows or glows. When I was given this type of feedback I mostly got grows about how I should add a health bar to the players or add more enemies. I'm only putting adding a health bar to my plan because the point of my project is to be a vice versa 2d shooter where only one top ship is placed into action to shoot. With that, my Beyond MVP list looks like this now:
+This is how I started setting up my Beyond MVP list which can be seen on my [plan](../prep/plan.md). In class, we had a period where we walked to other people's projects at their MVP and we would try them and give them grows or glows. When I was given this type of feedback I mostly got feedback about how I should add a health bar to the players or add more enemies. I'm only putting “add a health bar” to my plan because the point of my project is to be a vice versa 2d shooter where only one top ship is placed into action to shoot. With that, my Beyond MVP list looks like this now:
 - [ ] Make visual changes to the menu
 - [ ] Make visual changes to the gameplay
-  - [ ] Have the ships flash red when hit
+ - [ ] Have the ships flash red when hit
 - [ ] Add health bar for ships
 - [ ] Add timer
 
 Now let's get to the first day of working Beyond MVP.
 
 ## Day 1 of Beyond MVP - 4/27/2026
-So what I did was make vsual changes to the menu by changing the positioning of the play button. It was initially on the top and now with Inspector, it's at the center by using the Transform Tab and changing the position of the y-value.
+So what I did was make visual changes to the menu by changing the positioning of the play button. It was initially on the top and now with Inspector, it's at the center by using the Transform Tab and changing the position of the y-value.
 
 Now I also changed the background to a different color like blue to make the play screen look more unique by going to project settings and seeing this.![](../screenshots/UIbg.png) Because of this, my Play screen now looks like this. ![](../screenshots/playscreen.png) This means I can check off the visual changes made to the menu. Psyche! I have to add the label for people to know the game that they will play once hitting the play button. This is an example of me using Consideration. So, I added a label node to my main scene and put in the text "Vice Versa Shooter Game". Then, I went into Inspector, set the Horizontal Align to center and changed the scale until the title was purely visible. Now it finally looks like this. ![](../screenshots/playscreen2.png) Now, I can check this off my plan.
 
 ## Day 2 of Beyond MVP - 4/28/2026
-Now it's the next day and I decided to try and have the ships flash red when hit. Of course I won't know how to do that myself, so I used Google. Now I did know that I have to update the `take_damage` function in the ship's scripts. Google showed me this thing called a "tween" that changes the color quickly before turning back to normal. I created a variable called the tween and used the `create_tween` method.
+Now it's the next day and I decided to try and have the ships flash red when hit. Of course I won't know how to do that myself, so I used Google. Now, I knew that I have to update the `take_damage` function in the ship's scripts. Google showed me this thing called a "tween" that changes the color quickly before turning back to normal. I created a variable called the tween and used the `create_tween` method.
 ```java
 var tween = create_tween()
 tween.tween_property($Sprite2D, "modulate", Color.RED, 0.05)
@@ -31,75 +31,75 @@ tween.tween_property($Sprite2D, "modulate", Color.WHITE, 0.1)
 Google left a note telling me to replace Sprite2D with the name of my ship's Sprite node. I musunderstood this and put "top_ship". This was asking for the location. After some tweaking, this is what I ended up with.
 ```java
 func take_damage(amount: int):
-	health -= amount
-	var tween = create_tween()
-	tween.tween_property($".", "modulate", Color.RED, 0.05)
-	tween.tween_property($".", "modulate", Color.WHITE, 0.1)
+   health -= amount
+   var tween = create_tween()
+   tween.tween_property($".", "modulate", Color.RED, 0.05)
+   tween.tween_property($".", "modulate", Color.WHITE, 0.1)
 
-	if health <= 0:
-		top_died.emit()
-		// You can add an explosion effect here later
-		queue_free() // This removes the ship from the scene
+   if health <= 0:
+       top_died.emit()
+       // You can add an explosion effect here later
+       queue_free() // This removes the ship from the scene
 ```
-Now when this was put into play, the top ship flashed to normal, so I chanegd the Self modulation color in the inspector tab and gave the appropriate color. Now I've played with this code and noticed it's a little hard to actually win when I put my top ship's health at 20. So, I increased the pellet speed for my player's ship to 1,000.
+Now when this was put into play, the top ship flashed to normal, so I changed the Self modulation color in the inspector tab and gave the appropriate color. Now I've played with this code and noticed it's a little hard to actually win when I put my top ship's health at 20. So, I increased the pellet speed for my player's ship to 1,000.
 
 ## Day 3 of Beyond MVP - 4/29/2026
-Alright, it's the next day of Beyond MVP and I decided to go throguh what the people have been saying as the grows: Adding a health bar. This requires the use of Googling and it introduced me to the ProgressBar node which shows the percentage of health the player has, so I added this to the chld node along with importing a variable to represent that.
+Alright, it's the next day of Beyond MVP and I decided to go through what the people have been saying as it grows: Adding a health bar. This requires the use of Googling and it introduced me to the ProgressBar node which shows the percentage of health the player has, so I added this to the child node along with importing a variable to represent that.
 ```java
 @onready var p_health_bar: ProgressBar = $PlayerShip/pHealthBar
 ```
 I also changed the max value on the inspector side to the amount of health that the player ship has. This is the code I used to set up my health
 ```java
-	if p_health_bar:
-		p_health_bar.value = health
+   if p_health_bar:
+       p_health_bar.value = health
 ```
 This was in the `take_damage` function. The next code is in the `_ready` function
 ```java
-	p_health_bar.max_value = health
-	p_health_bar.value = health
+   p_health_bar.max_value = health
+   p_health_bar.value = health
 ```
-I was almost done, but when running the code, I realized the health bar's upside down, so I went to the 2D section on the top of Godot and rotated the bar. What I also did was change the collision shape to hit all ships and make the other two ships next to the player smaller. Now that the player ships health bar was done, the same would happen for the top ship. Now that that's done I did some changes to the percentage bars and now my screen now looks like this. ![](../screenshots/gameplay.png) In addition, I'll show you how the 2D set of that looks in the Player scene. ![](../screenshots/2dset.png)
+I was almost done, but when running the code, I realized the health bar's upside down, so I went to the 2D section on the top of Godot and rotated the bar. What I also did was change the collision shape to hit all ships and make the other two ships next to the player smaller. Now that the player ship's health bar was done, the same would happen for the top ship. Now that that's done I did some changes to the percentage bars and now my screen now looks like this. ![](../screenshots/gameplay.png) In addition, I'll show you how the 2D set looks in the Player scene. ![](../screenshots/2dset.png)
 
 ## Presentation
-Now that my Beyond MVP tasks were finished I had the presejntation and the elevator expo left to talk about in this entry, which means this is the last entry of APCSA and it's the end of all my Freedom Project entries that I've done since Sophomore year. In the sources or [this link](../prep/presentation.md), you'll see that I set up my plans for what I'll include in my presentation.
+Now that my Beyond MVP tasks were finished I had the presentation and the elevator expo left to talk about in this entry, which means this is the last entry of APCSA and it's the end of all my Freedom Project entries that I've done since Sophomore year. In the sources or [this link](../prep/presentation.md), you'll see that I set up my plans for what I'll include in my presentation.
 
-- Since my project is a vice versa 2D Shooter, I decided that my hook would be to ask the audience whi likes Galaga and explain how it works, so some people know what Galaga is.
+- Since my project is a vice versa 2D Shooter, I decided that my hook would be to ask the audience who likes Galaga and explain how it works, so some people know what Galaga is.
 
 - Then for my product I introduced my Vice Versa 2D shooter game via url preview by having that link in the screenshot that I put in my [presentation slides](https://docs.google.com/presentation/d/1L1pmkytvkNs3h4wF66MrrdmPFS5RxBlWtAFI9ewUmqo/edit?slide=id.g3db6786bad8_0_496#slide=id.g3db6786bad8_0_496).
 
-- Next is the Process and I decided to show my plans from MVP & Beyond MVP, code snippets of the pellets and the ship's scripts, and I explained the challenhe of making the Game over screens because there was this day that it took me forever to trey and code the ships to disappear when enough damage from the pellets have been dealt.
+- Next is the Process and I decided to show my plans from MVP & Beyond MVP, code snippets of the pellets and the ship's scripts, and I explained the challenge of making the Game over screens because there was this day that it took me forever to trey and code the ships to disappear when enough damage from the pellets have been dealt.
 
 - Finally for my conclusion, I put in the url to my preview because I don't know how to make the Godot file accessible to public and I added two takeaways for this project
-	1. Learn from the feedback you get from testers.
-	2. There's always room for improvement.
+   1. Learn from the feedback you get from testers.
+   2. There's always room for improvement.
 
-I put a skill from the [hstatsep website](https://hstatsep.github.io/students/) about consideration, which is a skill I acquired and will take about later.
+I put a skill from the [hstatsep website](https://hstatsep.github.io/students/) about consideration, which is a skill I acquired and will talk about later.
 
 But yeah, that's it for the presentation part. Now let's talk about the Expo elevator pitch.
 
 ## EXPO (Elevator Pitch)
-Now for this part of the entry, I didn't have as much time because 2nd period is when I'm supposed to leave to my SDI trip. So because of that, I was able to be one of the first students to get interviewed about my project. I talked to the judges about Galaga and compared that game to my prohject to introduce.
+Now for this part of the entry, I didn't have as much time because the 2nd period is when I'm supposed to leave for my SDI trip. So because of that, I was able to be one of the first students to get interviewed about my project. I talked to the judges about Galaga and compared that game to my project to introduce.
 
 Now, I didn't realize that the judges had 90 seconds to go to each project. For this elevator pitch, I showed a live preview of the 2D vice versa shooter project and talked about the following:
 * How I made the pellets
 * That one day where I struggled with making the ships disappear
 * The engine I used
 
-For other people that came to view my project, I also did the same thing, but I also paid attention to the questions the other people hagve previously asked sucha s the coding language of Godot, or what I would do to make this better. One student even asked me what inspired me to make this project. To that I said, my love for video games, simple ideas, and switching roles.
+For other people that came to view my project, I also did the same thing, but I also paid attention to the questions the other people have previously asked such as the coding language of Godot, or what I would do to make this better. One student even asked me what inspired me to make this project. To that I said, my love for video games, simple ideas, and switching roles.
 
-When answering questions on what I would do to make my project better, I said I would address any more grows and feedback the students gave me like adding a timer and more levels. My takeaway for my project was if I had more time, I would be able to make more possibilities in my project. As for the Elevator Pitch, I would show off as much code as possible and explain it, while the viewers see the code.
+When answering questions on what I would do to make my project better, I said I would address any more growth and feedback the students gave me like adding a timer and more levels. My takeaway for my project was if I had more time, I would be able to make more possibilities in my project. As for the Elevator Pitch, I would show off as much code as possible and explain it, while the viewers see the code.
 
 <hr>
 
-Welp, this is the final blog entry and I just want to look how far I have come from SEP. SEP10 was when I first started creating blog entries, where I believe the maximum I made was always 7. In the first year of Software Engineering, I was learning Web Design. Year 2, Github. And now Year 3 has arrived and I learned Java. I just want to thank the SEP community and staff for taking me on this path to my future. Of course, I also wouldn't have done this without Intro to Computer Science in Freshmen Year. But with all that, the writeups are finished and this is my last blog. I'm Alvin Frias, and these were my Freedom Project Blog Entries.
+Welp, this is the final blog entry and I just want to see how far I have come from SEP. SEP10 was when I first started creating blog entries, where I believe the maximum I made was always 7. In the first year of Software Engineering, I was learning Web Design. Year 2, Github. And now Year 3 has arrived and I am learning Java. I just want to thank the SEP community and staff for taking me on this path to my future. Of course, I also wouldn't have done this without Intro to Computer Science in Freshmen Year. But with all that, the writeups are finished and this is my last blog. I'm Alvin Frias, and these were my Freedom Project Blog Entries.
 
 ## EDP
 **WAIT!!** Before I properly end this blog entry, I, of course, have to talk about the final part of my Engineering Design Process & the skills that I've acquired. Before going in the **Communicating** part of the process, I talked about going in the **Improving** part of the Engineering Design Process, as I wanted to address the early feedback from the students that tried out my project. I added a health bar and added visual adjustments because of that feedback.
 
-Now I'm at the **Communicating** part of the process, where I communicated with the judges and other people interested in viewing my project by using what I learned in the presentation and answered any questions before they were asked by following the trend on what questions were asked commonly about the project
+Now I'm at the **Communicating** part of the process, where I communicated with the judges and other people interested in viewing my project by using what I learned in the presentation and answered any questions before they were asked by following the trend on what questions were asked commonly about the project.
 
 ## Skills
-**Consideration**: For this skill, I did a lot of considering when working beyond MVP. This was because of the feedback given tpo me by other students. The most common grow they gave was that I needed to add health bars, so I added that as one of my tasks beyond MVP in my [plan](../prep/plan.md).
+**Consideration**: For this skill, I took a lot of consideration when working beyond MVP. This was because of the feedback given to me by other students. The most common grow they gave was that I needed to add health bars, so I added that as one of my tasks beyond MVP in my [plan](../prep/plan.md).
 
 **Communication**: This was another new skill that I've acquired and it's also a skill that most likely everyone at the elevator pitch will acquire when presenting their project. An example of communication is public speaking in a presentation. In this case, I have done a presentation where I spoke publicly about my Vice Versa 2D Shooter project and used words more orally, which is why there weren't as much in the [slides for my presentation](https://docs.google.com/presentation/d/1L1pmkytvkNs3h4wF66MrrdmPFS5RxBlWtAFI9ewUmqo/edit?slide=id.g3db6786bad8_0_496#slide=id.g3db6786bad8_0_496). I guess the elevator pitch is another example of communication as I communicated my project and what it was about with other students and judges that were interested in viewing my project.
 
@@ -130,3 +130,6 @@ Now I'm at the **Communicating** part of the process, where I communicated with 
 [Previous](entry05.md) | [Next](entry07.md)
 
 [Home](../README.md)
+
+
+
